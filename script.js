@@ -2,13 +2,12 @@
 
 const gameBoard = (function () {
   const playButton = document.querySelector("#play-button");
-  const cellCount = 9;
-  const gameBoard = document.querySelector(".game-board");
   const playerPlaying = document.querySelector(".player-playing");
+  playerPlaying.textContent = "Press the Play button";
+
+  const cellCount = 9;
   let currentPlayer;
   let playing;
-
-  playerPlaying.textContent = "Press the Play button";
 
   function handleMove(cell) {
     if (cell.textContent || !playing) return;
@@ -27,16 +26,12 @@ const gameBoard = (function () {
   }
 
   function displayCells() {
-    // gameBoard.innerHTML = "";
     currentPlayer = "X";
     playerPlaying.textContent = `It's ${currentPlayer}'s turn`;
     for (let i = 0; i < cellCount; i++) {
       let cell = document.querySelector(`#c${i}`);
-      // cell.setAttribute("class", "cell-grid");
       cell.setAttribute("data-index", `${i}`);
       cell.textContent = "";
-      // console.log(cell.textContent);
-      // gameBoard.appendChild(cell);
     }
 
     const cells = document.querySelectorAll(".cell-grid");
@@ -83,5 +78,3 @@ const gameBoard = (function () {
   };
   return { play };
 })();
-
-// gameBoard.play();
