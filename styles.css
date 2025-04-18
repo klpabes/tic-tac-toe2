@@ -1,8 +1,13 @@
-/* @import "modern-normalize"; */
-@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+@font-face {
+  font-family: "Random Wednesday";
+  src: url("./assets/Random\ Wednesday.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
 
 * {
   box-sizing: border-box;
+  font-family: "Random Wednesday", "Times New Roman", Times, serif;
 }
 
 :root {
@@ -44,22 +49,64 @@ img {
 }
 
 body {
+  background-color: #9fb3df;
+
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
 .game-board {
-  width: 400px;
-  height: 400px;
-  border: black 2px solid;
+  margin: 20px 0 40px 0;
 
-  display: flex;
-  flex-wrap: wrap;
+  width: 300px;
+  height: 300px;
+  /* border: black 2px solid; */
+
+  display: grid;
+  grid-template-columns: repeat(3, 100px);
+  grid-template-rows: repeat(3, 100px);
 }
 
 .cell-grid {
-  border: black solid 1px;
-  flex-grow: 1;
-  width: calc(100% / 3);
+  /* border: black solid 1px; */
+  /* flex-grow: 1; */
+  /* width: 200px; */
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-size: 60px;
+}
+
+.top {
+  border-top: solid 3px #fffff0;
+}
+
+.left {
+  border-left: solid 3px#fffff0;
+}
+
+.right {
+  border-right: solid 3px #fffff0;
+}
+
+.bottom {
+  border-bottom: solid 3px #fffff0;
+}
+
+h1 {
+  font-size: 4rem;
+}
+
+#play-button {
+  border-radius: 20px;
+  height: 80px;
+  width: 200px;
+  font-size: 40px;
+}
+
+.player-playing {
+  font-size: 1.5rem;
 }

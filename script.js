@@ -4,8 +4,11 @@ const gameBoard = (function () {
   const playButton = document.querySelector("#play-button");
   const cellCount = 9;
   const gameBoard = document.querySelector(".game-board");
+  const playerPlaying = document.querySelector(".player-playing");
   let currentPlayer;
   let playing;
+
+  playerPlaying.textContent = "Press the Play button";
 
   function handleMove(cell) {
     if (cell.textContent || !playing) return;
@@ -14,21 +17,26 @@ const gameBoard = (function () {
       putSymbol(currentPlayer, cell.dataset.index);
       if (checkWinCondition(currentPlayer)) {
         playing = !playing;
+        playerPlaying.textContent = `${currentPlayer} Won!`;
         playButton.textContent = "Play Again?";
+        return;
       }
     }
-
     currentPlayer = currentPlayer === "X" ? "O" : "X";
+    playerPlaying.textContent = `It's ${currentPlayer}'s turn`;
   }
 
   function displayCells() {
-    gameBoard.innerHTML = "";
+    // gameBoard.innerHTML = "";
     currentPlayer = "X";
+    playerPlaying.textContent = `It's ${currentPlayer}'s turn`;
     for (let i = 0; i < cellCount; i++) {
-      let cell = document.createElement("div");
-      cell.setAttribute("class", "cell-grid");
+      let cell = document.querySelector(`#c${i}`);
+      // cell.setAttribute("class", "cell-grid");
       cell.setAttribute("data-index", `${i}`);
-      gameBoard.appendChild(cell);
+      cell.textContent = "";
+      // console.log(cell.textContent);
+      // gameBoard.appendChild(cell);
     }
 
     const cells = document.querySelectorAll(".cell-grid");
