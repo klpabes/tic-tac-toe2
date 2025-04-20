@@ -14,6 +14,12 @@ const gameBoard = (function () {
     if (cell.textContent === "") {
       cell.textContent = currentPlayer;
       putSymbol(currentPlayer, cell.dataset.index);
+      if (!board.includes(undefined)) {
+        playing = !playing;
+        playerPlaying.textContent = `It's a tie!`;
+        playButton.textContent = "Play Again?";
+        return;
+      }
       if (checkWinCondition(currentPlayer)) {
         playing = !playing;
         playerPlaying.textContent = `${currentPlayer} Won!`;
